@@ -1,0 +1,28 @@
+[project]
+name = "yt-dlp-transcript"
+version = "0.1.8"
+description = "Handy yt-dlp wrapper to download Youtube videos transcripts"
+authors = [
+  { name="Alexander Ryabov", email="alex.ryabov@gmail.com" },
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "yt-dlp>=2024.8.6",
+    "ConfigArgParse>=1.7",
+    "srt>=3.5.3",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+yt-dlp-transcript = "yt_dlp_transcript:main"
+
+[tool.uv]
+package = true
+
+[project.urls]
+Homepage = "https://github.com/haron/yt-dlp-transcript"
+Issues = "https://github.com/haron/yt-dlp-transcript/issues"
