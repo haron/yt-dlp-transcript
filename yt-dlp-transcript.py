@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 from yt_dlp import YoutubeDL
+from yt_dlp.utils import DownloadError  # noqa
 from tempfile import TemporaryDirectory
 from pathlib import Path
 from configargparse import ArgumentParser, ArgumentDefaultsRawHelpFormatter
@@ -17,15 +20,16 @@ opts = {
 }
 
 
-def download(args):
+def yt_dlp_transcript(url=None, language="en", verbose=False, **kwargs):
     with TemporaryDirectory() as temp_dir:
         path = Path(temp_dir)
         opts["outtmpl"] = {"default": str(path / "res")}
-        opts["subtitleslangs"] = [args.language]
-        if args.verbose:
+        opts["subtitleslangs"] = [language]
+        opts.update(kwargs)
+        if verbose:
             print(opts)
         ydl = YoutubeDL(opts)
-        ydl.download(args.url)
+        ydl.download(url)
         srt_file = list(path.glob("*"))[0]
         subtitles = srt.parse(open(srt_file).read())
         res = " ".join([s.content.replace(r"\h", "") for s in subtitles])
@@ -38,7 +42,7 @@ def main():
     parser.add_argument("-v", "--verbose", action="store_true", help="verbose mode")
     parser.add_argument("url", help="Youtube URL")
     args = parser.parse_args()
-    print(download(args))
+    print(yt_dlp_transcript(**args.__dict__))
 
 
 if __name__ == "__main__":

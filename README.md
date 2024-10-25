@@ -24,3 +24,8 @@ or:
       -l LANGUAGE, --language LANGUAGE
                             subtitles language (default: en)
       -v, --verbose         verbose mode (default: False)
+
+## Usage in Python code
+
+    from yt_dlp_transcript import yt_dlp_transcript
+    print(yt_dlp_transcript("https://www.youtube.com/watch?v=dQw4w9WgXcQ"))

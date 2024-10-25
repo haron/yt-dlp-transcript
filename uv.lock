@@ -275,7 +275,7 @@ wheels = [
 
 [[package]]
 name = "yt-dlp-transcript"
-version = "0.1.8"
+version = "0.1.12"
 source = { editable = "." }
 dependencies = [
     { name = "configargparse" },
@@ -285,7 +285,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "configargparse" },
-    { name = "srt" },
-    { name = "yt-dlp" },
+    { name = "configargparse", specifier = ">=1.7" },
+    { name = "srt", specifier = ">=3.5.3" },
+    { name = "yt-dlp", specifier = ">=2024.10.22" },
 ]
