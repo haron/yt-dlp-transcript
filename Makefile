@@ -1,4 +1,4 @@
-build: clean
+build: clean linter
 	mkdir -p src/yt_dlp_transcript && cp yt-dlp-transcript.py src/yt_dlp_transcript/__init__.py
 	uv venv -q
 	uv sync
@@ -14,8 +14,9 @@ githooks:
 	git config --local core.hooksPath .githooks
 
 linter: githooks
-	uv tool run black --line-length 120 *.py
-	uv tool run flake8 --config ~/.flake8 *.py
+	uvx isort *.py
+	uvx ruff format --line-length 120 *.py
+	uvx ruff check
 
 safety:
-	uv tool run safety check -o bare
+	uvx safety check -o bare

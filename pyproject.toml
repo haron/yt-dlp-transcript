@@ -1,6 +1,6 @@
 [project]
 name = "yt-dlp-transcript"
-version = "0.1.12"
+version = "0.1.17"
 description = "Handy yt-dlp wrapper to download Youtube videos transcripts"
 authors = [
   { name="Alexander Ryabov", email="alex.ryabov@gmail.com" },

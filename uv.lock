@@ -275,7 +275,7 @@ wheels = [
 
 [[package]]
 name = "yt-dlp-transcript"
-version = "0.1.12"
+version = "0.1.17"
 source = { editable = "." }
 dependencies = [
     { name = "configargparse" },

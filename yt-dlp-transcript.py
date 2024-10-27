@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 
+from copy import deepcopy
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+import srt
+from configargparse import ArgumentDefaultsRawHelpFormatter, ArgumentParser
 from yt_dlp import YoutubeDL
 from yt_dlp.utils import DownloadError  # noqa
-from tempfile import TemporaryDirectory
-from pathlib import Path
-from configargparse import ArgumentParser, ArgumentDefaultsRawHelpFormatter
-import srt
 
-opts = {
+default_opts = {
     "no_warnings": True,
     "noprogress": True,
     "postprocessors": [
@@ -23,15 +25,19 @@ opts = {
 def yt_dlp_transcript(url=None, language="en", verbose=False, **kwargs):
     with TemporaryDirectory() as temp_dir:
         path = Path(temp_dir)
+        opts = deepcopy(default_opts)
         opts["outtmpl"] = {"default": str(path / "res")}
         opts["subtitleslangs"] = [language]
         opts.update(kwargs)
         if verbose:
+            del opts["quiet"]
             print(opts)
         ydl = YoutubeDL(opts)
         ydl.download(url)
-        srt_file = list(path.glob("*"))[0]
-        subtitles = srt.parse(open(srt_file).read())
+        srt_files = list(path.glob("*"))
+        if len(srt_files) < 1:
+            raise DownloadError(f"Error: cannot download subtitles for {url}, probably the video has no subtitles.")
+        subtitles = srt.parse(open(srt_files[0]).read())
         res = " ".join([s.content.replace(r"\h", "") for s in subtitles])
         return res
 
