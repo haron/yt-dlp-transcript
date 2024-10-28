@@ -17,6 +17,10 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+]
 [project.scripts]
 yt-dlp-transcript = "yt_dlp_transcript:main"
 
