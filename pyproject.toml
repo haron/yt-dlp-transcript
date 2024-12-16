@@ -1,14 +1,14 @@
 [project]
 name = "yt-dlp-transcript"
-version = "0.1.17"
+version = "0.1.19"
 description = "Handy yt-dlp wrapper to download Youtube videos transcripts"
 authors = [
   { name="Alexander Ryabov", email="alex.ryabov@gmail.com" },
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
-    "yt-dlp>=2024.10.22",
+    "yt-dlp==2024.12.13",
     "ConfigArgParse>=1.7",
     "srt>=3.5.3",
 ]
