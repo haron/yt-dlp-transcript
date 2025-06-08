@@ -8,6 +8,14 @@ def test_transcript_contains_expected_text():
     transcript = yt_dlp_transcript(url)
     assert "some comfort pets" in transcript.lower()
 
+
+def test_transcript_language():
+    """Test that transcript is in expected language"""
+    url = "https://www.youtube.com/watch?v=5siqfFnLSdw"
+    transcript = yt_dlp_transcript(url, language="es")
+    assert "horas y media" in transcript.lower()
+
+
 def test_invalid_url():
     """Test that invalid URL raises DownloadError."""
     with pytest.raises(DownloadError):
