@@ -44,7 +44,7 @@ def yt_dlp_transcript(url=None, language="en", verbose=False, **kwargs):
 
 def main():
     parser = ArgumentParser(formatter_class=ArgumentDefaultsRawHelpFormatter)
-    parser.add_argument("-l", "--language", default="en", help="subtitles language")
+    parser.add_argument("-l", "--language", default="en-orig", help="subtitles language")
     parser.add_argument("-v", "--verbose", action="store_true", help="verbose mode")
     parser.add_argument("url", help="Youtube URL")
     args = parser.parse_args()
