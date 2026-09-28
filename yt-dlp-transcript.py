@@ -22,7 +22,7 @@ default_opts = {
 }
 
 
-def yt_dlp_transcript(url=None, language="en", verbose=False, **kwargs):
+def yt_dlp_transcript(url=None, language="en-orig", verbose=False, **kwargs):
     with TemporaryDirectory() as temp_dir:
         path = Path(temp_dir)
         opts = deepcopy(default_opts)
