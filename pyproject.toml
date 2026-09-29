@@ -17,10 +17,14 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-[project.optional-dependencies]
-test = [
-    "pytest>=8.0.0",
+[dependency-groups]
+dev = [
+  "isort",
+  "ruff",
+  "safety",
+  "ty",
 ]
+
 [project.scripts]
 yt-dlp-transcript = "yt_dlp_transcript:main"
 
@@ -30,3 +34,7 @@ package = true
 [project.urls]
 Homepage = "https://github.com/haron/yt-dlp-transcript"
 Issues = "https://github.com/haron/yt-dlp-transcript/issues"
+
+[tool.ruff]
+line-length = 140
+

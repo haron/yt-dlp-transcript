@@ -16,8 +16,8 @@ githooks:
 	git config --local core.hooksPath .githooks
 
 linter: githooks
-	uvx isort *.py
-	uvx ruff format --line-length 120 *.py
+	uv run isort -q **/*.py
+	uv run ruff format -q **/*.py
 	uvx ruff check
 
 safety:

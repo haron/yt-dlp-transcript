@@ -1,6 +1,5 @@
 import pytest
 from yt_dlp.utils import DownloadError
-
 from yt_dlp_transcript import yt_dlp_transcript
 
 
