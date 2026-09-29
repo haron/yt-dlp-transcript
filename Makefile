@@ -2,7 +2,7 @@
 
 build: clean linter
 	mkdir -p src/yt_dlp_transcript && cp yt-dlp-transcript.py src/yt_dlp_transcript/__init__.py
-	uv venv -q
+	uv venv -q --clear
 	uv sync
 	uv build
 
@@ -24,5 +24,4 @@ safety:
 	uvx safety check -o bare
 
 test: build
-	uv pip install -e ".[test]"
-	.venv/bin/pytest test
+	.venv/bin/pytest

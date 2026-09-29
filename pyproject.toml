@@ -23,6 +23,7 @@ dev = [
   "ruff",
   "safety",
   "ty",
+  "pytest",
 ]
 
 [project.scripts]
